@@ -7,6 +7,11 @@ abstract class PagesRequest
 {
     protected $url;
 
+    public function __construct()
+    {
+        libxml_use_internal_errors(true);
+    }
+
     /**
      * @param $url
      * @return string

@@ -8,8 +8,8 @@ class HomeController extends Controller
 {
     public function index()
     {
-        dd( app('countriesList')->get());
-
-        return view('search');
+        return view('search', [
+            'countries' => collect(app('countriesList')->getCountries())
+        ]);
     }
 }
