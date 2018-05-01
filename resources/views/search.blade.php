@@ -2,8 +2,8 @@
 
 @section('content')
     <div>
-        <form method="GET" action="">
-            <input type="text">
+        <form method="GET" action="{{ route('search')}}">
+            <input type="text" name="search">
             <input type="submit" value="search">
 
             <hr>
@@ -11,7 +11,11 @@
                 <div class="row">
                         @foreach($countriesChunk as $country)
                             <div class="col-4">
-                                <input type="checkbox" class="form-check-input" value="{{ $country['title'] }}" checked>
+                                <input type="checkbox"
+                                       class="form-check-input"
+                                       value="{{ $country['url'] }}"
+                                       name="url[]"
+                                       checked>
                                 <label class="form-check-label">{{ $country['title'] }}</label>
                             </div>
 

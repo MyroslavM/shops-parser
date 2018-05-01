@@ -11,7 +11,9 @@
 |
 */
 
+Route::get('/search', [
+    'uses' =>'HomeController@search',
+    'as' => 'search'
+]);
 Route::get('/', 'HomeController@index');
-Route::get('/test', function (){
-   dd('text');
-});
+

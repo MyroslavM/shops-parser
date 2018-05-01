@@ -30,14 +30,16 @@ class CountriesList extends PagesRequest
         $dom->loadHTML($html);
         $finder = new DOMXPath($dom);
 
-        $nodes = $finder->query("//*[contains(@class, 'country-name')]");
+        $nodes = $finder->query("//*[contains(@class, 'country-column')]/li/a");
 
         foreach ($nodes as $node) {
             if ($node->nodeValue)
                 $countriesList[] = [
-                    'title' => $node->nodeValue
+                    'title' => $node->nodeValue,
+                    'url' => $node->getAttribute('href')
                 ];
         }
+
         return $countriesList;
     }
 }

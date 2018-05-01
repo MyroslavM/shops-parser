@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Services\pages\CountriesList;
+use App\Services\pages\SearchResult;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -27,5 +28,9 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton('countriesList', function () {
             return new CountriesList();
         });
+        $this->app->singleton('searchResult', function () {
+            return new SearchResult();
+        });
     }
+
 }
