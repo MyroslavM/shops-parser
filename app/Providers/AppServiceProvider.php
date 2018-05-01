@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Services\CountriesList;
+use App\Services\pages\CountriesList;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
