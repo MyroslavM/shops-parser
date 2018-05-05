@@ -29,5 +29,5 @@ abstract class PagesRequest
         return $query;
     }
 
-    abstract function get(): string;
+    abstract function get();
 }

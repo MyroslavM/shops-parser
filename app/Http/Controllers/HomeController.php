@@ -20,8 +20,9 @@ class HomeController extends Controller
         {
             app('searchResult')->setSearchQuery($request->search);
             app('searchResult')->setUrl($country);
-            app('searchResult')->get();
-            dd($country);
+            $tmp = app('searchResult')->get();
+            if($tmp)
+                dd($tmp);
 
         }
     }
