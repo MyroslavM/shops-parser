@@ -13,7 +13,7 @@
                             <div class="col-4">
                                 <input type="checkbox"
                                        class="form-check-input"
-                                       value="{{ $country['url'] }}"
+                                       value="{{ $country['title']. "|" . $country['url']  }}"
                                        name="url[]"
                                        checked>
                                 <label class="form-check-label">{{ $country['title'] }}</label>

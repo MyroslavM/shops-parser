@@ -14,17 +14,22 @@ class HomeController extends Controller
     }
     public function search(Request $request)
     {
-       //dd( $request->all());
-
+        $i = 0;
+        $countries=[];
         foreach ($request->url as $country)
         {
+            $tmp = explode('|', $country);
             app('searchResult')->setSearchQuery($request->search);
-            app('searchResult')->setUrl($country);
-            $tmp = app('searchResult')->get();
-            if($tmp)
-                dd($tmp);
+            app('searchResult')->setUrl($tmp[1]);
+            $products= app('searchResult')->get();
 
+            if($products)
+                $countries[$tmp[0]] = $products;
+            if($i > 3) break;
+            $i++;
         }
+
+        dd($countries);
     }
 
 
