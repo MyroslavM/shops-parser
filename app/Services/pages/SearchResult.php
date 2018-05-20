@@ -10,13 +10,14 @@ use DOMXPath;
 
 class SearchResult extends PagesRequest
 {
-    protected $uriPrefix = '/search/?q=';
+    protected $uriPrefix = '/search?q=';
     protected $url;
     protected $searchQuery;
 
     public function get()
     {
         $products = [];
+
         $html = $this->request($this->url . $this->uriPrefix . $this->searchQuery);
         if ($html == "") return false;
         $dom = new DOMDocument();

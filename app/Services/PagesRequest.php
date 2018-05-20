@@ -18,6 +18,13 @@ abstract class PagesRequest
      */
     public function request($url)
     {
+//        dd(urlencode('+'));
+//        $url = preg_replace('/\040/', '%2B', $url);
+        $url = preg_replace('/\040/', '+', $url);
+//        $url = urlencode($url);
+//        dd($url);
+
+
         $curl_handle = curl_init();
         curl_setopt($curl_handle, CURLOPT_URL, $url);
         curl_setopt($curl_handle, CURLOPT_CONNECTTIMEOUT, 2);
