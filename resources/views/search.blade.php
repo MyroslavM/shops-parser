@@ -15,7 +15,7 @@
                                        class="form-check-input"
                                        value="{{ $country['title']. "|" . $country['url']  }}"
                                        name="url[]"
-                                       checked>
+                                       >
                                 <label class="form-check-label">{{ $country['title'] }}</label>
                             </div>
 

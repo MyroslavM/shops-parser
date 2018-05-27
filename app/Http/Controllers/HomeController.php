@@ -25,7 +25,7 @@ class HomeController extends Controller
 
             if($products)
                 $countries[$tmp[0]] = $products;
-            if($i > 3) break;
+            if($i > 10) break;
             $i++;
         }
 
