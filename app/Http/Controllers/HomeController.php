@@ -22,6 +22,7 @@ class HomeController extends Controller
             app('searchResult')->setSearchQuery($request->search);
             app('searchResult')->setUrl($tmp[1]);
             $products= app('searchResult')->get();
+            dd(app("CurrencyService")->convertCurrency( 30, 'usd', 'euro' ));
 
             if($products)
                 $countries[$tmp[0]] = $products;
@@ -29,7 +30,10 @@ class HomeController extends Controller
             $i++;
         }
 
-        dd($countries);
+
+        return view ("prodacts",['countries'=> $countries]);
+
+
     }
 
 

@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Services\pages\CountriesList;
 use App\Services\pages\SearchResult;
 use Illuminate\Support\ServiceProvider;
+use App\Services\CurrencyService;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -30,6 +31,9 @@ class AppServiceProvider extends ServiceProvider
         });
         $this->app->singleton('searchResult', function () {
             return new SearchResult();
+        });
+        $this->app->singleton('CurrencyService', function () {
+                return new CurrencyService();
         });
     }
 
