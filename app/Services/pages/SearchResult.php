@@ -23,8 +23,11 @@ class SearchResult extends PagesRequest
         $dom = new DOMDocument();
         $dom->loadHTML($html);
         $finder = new DOMXPath($dom);
+        $nodes1 = $finder->query("//*[contains(@class, 'images_container___BVFbU')]");
         $nodes = $finder->query("//*[contains(@class, 'product-info-wrapper')]");
 
+
+        dd($nodes1);
         foreach ($nodes as $node) {
             $products[] = $this->getProduct($dom, $node);
         }
@@ -32,15 +35,19 @@ class SearchResult extends PagesRequest
         return $products;
     }
 
-    protected function getProduct($dom, $node)
+    protected function getProduct($dom, $node )
     {
         $dom->loadHTML($node->C14N());
         $finder = new DOMXPath($dom);
+
+
 
         return [
             'href' => $this->getProductLink($finder),
             'title' => $this->getProductTitle($finder),
             'price' => $this->getProductPrice($finder),
+
+            'img' => $this->getProductImg($finder),
         ];
     }
 
@@ -64,7 +71,8 @@ class SearchResult extends PagesRequest
     protected function getProductLink($finder)
     {
         $nodes = $finder->query("//*[contains(@class, 'product-link')]");
-        return $this->url . $nodes[0]->getAttribute("href");
+
+        return $nodes[0]->getAttribute("href");
     }
 
     public function setUrl($url)
@@ -75,5 +83,14 @@ class SearchResult extends PagesRequest
     public function setSearchQuery($searchQuery)
     {
         $this->searchQuery = $searchQuery;
+    }
+
+
+    public function getProductImg($finder)
+    {
+        $nodes1 = $finder->query("//*[contains(@class, 'performance-item')]");
+
+
+        return $nodes1[0]->getAttribute("src");
     }
 }

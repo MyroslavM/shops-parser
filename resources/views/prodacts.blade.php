@@ -21,6 +21,7 @@
                     </td>
                     <td>
                         <a href="{{$product['href']}}" target="_blank">Go to the product</a>
+
                     </td>
                 </tr>
                 @endforeach
