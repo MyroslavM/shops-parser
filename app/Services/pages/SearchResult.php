@@ -24,10 +24,7 @@ class SearchResult extends PagesRequest
         $dom->loadHTML($html);
         $finder = new DOMXPath($dom);
 
-        $nodes = $finder->query("//*[contains(@class, 'product-info-wrapper')]");
-        $nodes1 = $finder->query("//*[contains(@class, 'container')]");
-
-        dd($nodes1[0]);
+        $nodes = $finder->query("//*[contains(@class, 'innercard')]");
         foreach ($nodes as $node) {
             $products[] = $this->getProduct($dom, $node);
         }
@@ -35,18 +32,15 @@ class SearchResult extends PagesRequest
         return $products;
     }
 
-    protected function getProduct($dom, $node )
+    protected function getProduct($dom, $node)
     {
         $dom->loadHTML($node->C14N());
         $finder = new DOMXPath($dom);
-
-
 
         return [
             'href' => $this->getProductLink($finder),
             'title' => $this->getProductTitle($finder),
             'price' => $this->getProductPrice($finder),
-
             'img' => $this->getProductImg($finder),
         ];
     }
@@ -88,9 +82,10 @@ class SearchResult extends PagesRequest
 
     public function getProductImg($finder)
     {
-        $nodes1 = $finder->query("//*[contains(@class, 'performance-item')]");
+        $nodes = $finder->query("//*[contains(@class, 'image')]/a/img");
 
-
-        return $nodes1[0]->getAttribute("src");
+        if($nodes[0])
+            return $nodes[0]->getAttribute('data-original');
+        return '#';
     }
 }
