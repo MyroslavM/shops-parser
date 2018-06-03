@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Country;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -9,7 +10,8 @@ class HomeController extends Controller
     public function index()
     {
         return view('search', [
-            'countries' => collect(app('countriesList')->getCountries())
+//            'countries' => collect(app('countriesList')->getCountries())
+            'countries' => Country::all()
         ]);
     }
     public function search(Request $request)

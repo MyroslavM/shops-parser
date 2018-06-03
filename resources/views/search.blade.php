@@ -13,10 +13,10 @@
                             <div class="col-4">
                                 <input type="checkbox"
                                        class="form-check-input"
-                                       value="{{ $country['title']. "|" . $country['url']  }}"
+                                       value="{{ $country->title . "|" . $country->href  }}"
                                        name="url[]"
                                        >
-                                <label class="form-check-label">{{ $country['title'] }}</label>
+                                <label class="form-check-label">{{ $country->title}}</label>
                             </div>
 
                         @endforeach

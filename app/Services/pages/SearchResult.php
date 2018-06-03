@@ -23,11 +23,11 @@ class SearchResult extends PagesRequest
         $dom = new DOMDocument();
         $dom->loadHTML($html);
         $finder = new DOMXPath($dom);
-        $nodes1 = $finder->query("//*[contains(@class, 'images_container___BVFbU')]");
+
         $nodes = $finder->query("//*[contains(@class, 'product-info-wrapper')]");
+        $nodes1 = $finder->query("//*[contains(@class, 'container')]");
 
-
-        dd($nodes1);
+        dd($nodes1[0]);
         foreach ($nodes as $node) {
             $products[] = $this->getProduct($dom, $node);
         }
