@@ -37,6 +37,10 @@ class HomeController extends Controller
 
 
     }
+    public function getStatistic(Request $request)
+    {
+        return response()->json(Country::all()) ;
+    }
 
 
 }

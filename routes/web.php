@@ -15,5 +15,6 @@ Route::get('/search', [
     'uses' =>'HomeController@search',
     'as' => 'search'
 ]);
+Route::get('/statistic', 'HomeController@getStatistic');
 Route::get('/', 'HomeController@index');
 
