@@ -29,21 +29,17 @@
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
     google.charts.load('current', {'packages':['corechart']});
-    google.charts.setOnLoadCallback(drawChart);
+
 
     function drawChart() {
 
         var data = google.visualization.arrayToDataTable([
             ['Task', 'Hours per Day'],
-            ['Work',     11],
-            ['Eat',      2],
-            ['Commute',  2],
-            ['Watch TV', 2],
-            ['Sleep',    7]
+            ...statisticResult
         ]);
 
         var options = {
-            title: 'My Daily Activities'
+            title: 'Популярність країн'
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
@@ -57,10 +53,21 @@
     $.ajax({
         url:"/statistic"
     }).done(function (data) {
-        console.log(data)
-        statisticResult = data
-        drawChart()
+        statisticResult = transformToChartData(data)
+        google.charts.setOnLoadCallback(drawChart);
     })
+
+    function transformToChartData(inputData) {
+        var outputData = [];
+
+        for(var row in inputData) {
+            outputData.push([
+                inputData[row].title,
+                inputData[row].value
+            ]);
+        }
+        return outputData;
+    }
 
 </script>
 </body>
