@@ -7,6 +7,7 @@ namespace App\Services\pages;
 use App\Services\PagesRequest;
 use DOMDocument;
 use DOMXPath;
+use Illuminate\Support\Collection;
 
 class SearchResult extends PagesRequest
 {
@@ -16,7 +17,7 @@ class SearchResult extends PagesRequest
 
     public function get()
     {
-        $products = [];
+        $products = new Collection();
 
         $html = $this->request($this->url . $this->uriPrefix . $this->searchQuery);
         if ($html == "") return false;
@@ -26,10 +27,10 @@ class SearchResult extends PagesRequest
 
         $nodes = $finder->query("//*[contains(@class, 'innercard')]");
         foreach ($nodes as $node) {
-            $products[] = $this->getProduct($dom, $node);
+           $products->push($this->getProduct($dom, $node));
+//            $products[] = $this->getProduct($dom, $node);
         }
-
-        return $products;
+        return $products->sortBy('priceValue');
     }
 
     protected function getProduct($dom, $node)
@@ -40,7 +41,8 @@ class SearchResult extends PagesRequest
         return [
             'href' => $this->getProductLink($finder),
             'title' => $this->getProductTitle($finder),
-            'price' => $this->getProductPrice($finder),
+            'priceValue' => $this->getProductPriceValue($finder),
+            'priceSign' => $this->getProductPriceSign($finder),
             'img' => $this->getProductImg($finder),
         ];
     }
@@ -51,15 +53,23 @@ class SearchResult extends PagesRequest
         return $nodes[0]->nodeValue;
     }
 
-    protected function getProductPrice($finder)
+    protected function getProductPriceValue($finder)
+    {
+
+
+        $nodes = $finder->query("//*[contains(@class, 'product-info-price-rating')]/div/*[contains(@class, 'salesprice')]");
+        $price = preg_replace("/\s+/", " ", $nodes[0]->nodeValue);
+        $price = preg_replace('/\./', '', $price);
+        return  (double)$price;
+    }
+    protected function getProductPriceSign($finder)
     {
         $nodes = $finder->query("//*[contains(@class, 'product-info-price-rating')]/div/*[contains(@class, 'currency-sign')]");
         $currency = preg_replace("/\s+/", " ", $nodes[0]->nodeValue);
 
-        $nodes = $finder->query("//*[contains(@class, 'product-info-price-rating')]/div/*[contains(@class, 'salesprice')]");
-        $price = preg_replace("/\s+/", " ", $nodes[0]->nodeValue);
 
-        return $currency . $price;
+
+        return $currency ;
     }
 
     protected function getProductLink($finder)
@@ -88,4 +98,5 @@ class SearchResult extends PagesRequest
             return $nodes[0]->getAttribute('data-original');
         return '#';
     }
+
 }
