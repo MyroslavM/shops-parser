@@ -2,6 +2,7 @@
 
 @section('content')
     <div>
+        <a href="/view-statistic">view-statistic</a>
         <form method="GET" action="{{ route('search')}}">
             <input type="text" name="search">
             <input type="submit" value="search">

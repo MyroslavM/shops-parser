@@ -41,6 +41,10 @@ class HomeController extends Controller
     {
         return response()->json(Country::all()) ;
     }
+    public function viewStatistic(Request $request)
+    {
+        return view("statistic");
+    }
 
 
 }

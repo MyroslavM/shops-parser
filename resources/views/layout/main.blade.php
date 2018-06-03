@@ -18,7 +18,7 @@
 <div class="container">
     @yield('content')
 </div>
-<div id="piechart" style="width: 900px; height: 500px;"></div>
+
 <script
         src="https://code.jquery.com/jquery-3.3.1.min.js"
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
