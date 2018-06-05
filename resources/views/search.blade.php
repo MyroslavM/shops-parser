@@ -11,7 +11,7 @@
             @foreach($countries->chunk(3) as $countriesChunk)
                 <div class="row">
                         @foreach($countriesChunk as $country)
-                            <div class="col-4">
+                            <div class="col-lg-4">
                                 <input type="checkbox"
                                        class="form-check-input"
                                        value="{{ $country->title . "|" . $country->href  }}"

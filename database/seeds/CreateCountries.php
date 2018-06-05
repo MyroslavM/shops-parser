@@ -30,12 +30,12 @@ class CreateCountries extends Seeder
             [
                 'title' => 'Canada (EN)',
                 'href' => 'https://www.adidas.ca/en',
-                'value' => '18.2',
+                'value' => '26,1',
             ],
             [
                 'title' => 'Canada (FR)',
                 'href' => 'https://www.adidas.ca/fr',
-                'value' => '16.7',
+                'value' => '19,4',
             ],
             [
                 'title' => 'Chile',
@@ -60,7 +60,7 @@ class CreateCountries extends Seeder
             [
                 'title' => 'United States',
                 'href' => 'https://www.adidas.com/us',
-                'value' => '12.9',
+                'value' => '9,9',
             ],
             [
                 'title' => 'Australia',
@@ -100,7 +100,7 @@ class CreateCountries extends Seeder
             [
                 'title' => 'Deutschland',
                 'href' => 'https://www.adidas.de/',
-                'value' => '10.5',
+                'value' => '4,5',
             ],
             [
                 'title' => 'Greece',
@@ -110,12 +110,12 @@ class CreateCountries extends Seeder
             [
                 'title' => 'Espana',
                 'href' => 'https://www.adidas.es/',
-                'value' => '9.9',
+                'value' => '22,1',
             ],
             [
                 'title' => 'France',
                 'href' => 'https://www.adidas.fr/',
-                'value' => '7.3',
+                'value' => '3,4',
             ],
             [
                 'title' => 'Italia',
@@ -145,7 +145,7 @@ class CreateCountries extends Seeder
             [
                 'title' => 'Portugal',
                 'href' => 'https://www.adidas.pt/',
-                'value' => '9.9',
+                'value' => '0',
             ],
             [
                 'title' => 'Slovakia',

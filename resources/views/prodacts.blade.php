@@ -16,10 +16,11 @@
 
                                 <div class="card-body">
                                     <h5 class="card-title">{{$product['title']}}}</h5>
-                                    {{--<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>--}}
+
                                     <h2> <span class="badge badge-pill badge-success">{{$product['priceSign']}} {{$product['priceValue']}}</span></h2>
                                     <hr>
-                                    <a class="btn btn-primary" href="{{$product['href']}}" target="_blank">Go to the product</a>
+
+                                    <a class="btn btn-primary" class="glyphicon glyphicon-search" href="{{$product['href']}}" target="_blank">Go to the product</a>
                                 </div>
                             </div>
                         </div>
