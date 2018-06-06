@@ -145,7 +145,7 @@ class CreateCountries extends Seeder
             [
                 'title' => 'Portugal',
                 'href' => 'https://www.adidas.pt/',
-                'value' => '0',
+                'value' => 0,
             ],
             [
                 'title' => 'Slovakia',

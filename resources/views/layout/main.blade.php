@@ -39,7 +39,7 @@
         ]);
 
         var options = {
-            title: 'Популярність країн'
+            title: 'Країни в яких найчастіше низькі ціни'
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));

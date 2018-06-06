@@ -2,11 +2,13 @@
 
 @section('content')
     <div>
-        <a href="/view-statistic">view-statistic</a>
         <form method="GET" action="{{ route('search')}}">
-            <input type="text" name="search">
-            <input type="submit" value="search">
-
+            <div class="row">
+                <div class="col-10">
+                    <input type="text" name="search">
+                    <input type="submit" value="search"></div>
+                <div class="col-2"><a class="btn btn-secondary" href="/view-statistic">view-statistic</a></div>
+            </div>
             <hr>
             @foreach($countries->chunk(3) as $countriesChunk)
                 <div class="row">
