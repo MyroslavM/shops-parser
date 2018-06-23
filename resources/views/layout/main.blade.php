@@ -14,7 +14,7 @@
           integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 </head>
 <body>
-{{--@include('partials.header')--}}
+@include('partials.header')
 <div class="container">
     @yield('content')
 </div>

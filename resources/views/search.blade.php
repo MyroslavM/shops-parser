@@ -14,12 +14,14 @@
                 <div class="row">
                         @foreach($countriesChunk as $country)
                             <div class="col-lg-4">
+                                <div class="card my-2">
                                 <input type="checkbox"
                                        class="form-check-input"
                                        value="{{ $country->title . "|" . $country->href  }}"
                                        name="url[]"
                                        >
                                 <label class="form-check-label">{{ $country->title}}</label>
+                                </div>
                             </div>
 
                         @endforeach
