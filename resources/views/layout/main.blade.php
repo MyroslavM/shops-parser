@@ -17,6 +17,7 @@
 @include('partials.header')
 <div class="container">
     @yield('content')
+    @include('partials.footer')
 </div>
 
 <script
